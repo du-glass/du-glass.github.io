@@ -1,0 +1,79 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F7FA;    }
+.lending{
+display: flex;
+flex-direction: row-reverse;
+width: 1200px;
+background: white;   
+margin: 40px auto; 
+}
+.My-section{
+    display: flex;
+    flex-direction: column;  
+    padding-top: 100px;
+    padding-right: 90px;
+    padding-bottom: 100px;
+    padding-left: 90px;
+}
+.About-Me{
+    display: flex;
+    flex-direction: column;
+}
+.about-me-profession{
+    font-size: 14px;
+    font-weight: 700;
+    color: black;  
+}
+/* Work expirience */
+.Shop-asistant{
+    color: #FB6D3A
+}
+.University{
+    color: #FB6D3A;
+}
+/* Sidebar */
+    .Sidebar{
+        background-color: #1E2939;
+        color: #F5F7FA;
+        width: 370px;
+        padding-top: 40px;
+    }
+    .Contacts,.Tech-Skills,.Soft-Skills{
+        margin: 50px 0px 0px 40px;
+    }
+    .Sidebar-title{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 27px;
+    }
+    li{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    /* comtacts */
+    .phone,.email{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 27px;
+        margin-right: 5px;
+        
+    }
+    .contcolor{
+        color: #919cad;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    /* listcolor */
+    .listcolor{
+        color: #FB6D3A;
+    }
+    .sidebar-color-text{
+        color:white;
+    }
