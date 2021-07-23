@@ -363,8 +363,3 @@
     letter-spacing: 0.01em;
     color: #101010;
 }
-@media (max-width:1300px){
-    .store-cards{
-        width: 90%;
-    }
-}
