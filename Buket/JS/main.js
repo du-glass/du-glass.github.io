@@ -3,4 +3,4 @@ $('.multiple-items').slick({
     slidesToShow: 6,
     slidesToScroll: 1
   });
-  $('.single-item').slick();
+$('.single-item').slick();
