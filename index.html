@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <!-- <link rel="stylesheet" href="./style.css"> -->
+   <style>
+      * {
+         box-sizing: border-box;
+      }
+
+      body {
+         margin: 0;
+         padding: 0;
+         font-size: 12px;
+         text-align: center;
+         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+
+      .sklad {
+         position: relative;
+      }
+
+      .sklad span {
+         position: absolute;
+         color: red;
+         font-size: 22px;
+         padding: 5px 14px;
+         text-transform: uppercase;
+         border: 4px double red;
+         top: 40px;
+         right: 80px;
+         transform: rotateZ(-35deg);
+         /* box-shadow: 0 0 10px black; */
+      }
+
+      .img {
+         width: 160px;
+      }
+
+      .container {
+         position: relative;
+         max-width: 400px;
+         padding: 20px 10px;
+         margin: 0 auto;
+         height: 100vh;
+      }
+
+      .name {
+         display: block;
+         width: 70%;
+         margin: 0 auto 10px;
+         padding: 3px 5px;
+         text-align: center;
+         height: 35px;
+         font-size: 20px;
+      }
+
+      .name-btn {
+         margin-bottom: 40px;
+         font-size: 15px;
+         background-color: transparent;
+         font-size: 16px;
+         padding: 5px 15px;
+         font-weight: 300;
+      }
+
+      .info {
+         width: 320px;
+         height: 400px;
+         margin: 0 auto;
+         /* border: 1px solid grey; */
+         position: relative;
+         background-color: rgb(253, 249, 211);
+         /* box-shadow: inset 5px 5px 10px rgba(154, 147, 140, 0.5), 5px 5px 10px rgba(255, 255, 255, 1); */
+      }
+
+      .floor-1 {
+         box-shadow: inset 5px 5px 10px rgba(154, 147, 140, 0.5), 5px 5px 10px rgba(255, 255, 255, 1);
+      }
+
+      .floor-2 {
+         box-shadow: 0 0 10px grey;
+      }
+
+      .floor-text {
+         position: absolute;
+         top: -41px;
+         left: 132px;
+         font-size: 16px;
+         font-weight: 700;
+      }
+
+      .rack {
+         position: absolute;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border: 2px solid grey;
+      }
+
+      .rack-1 {
+         bottom: 0;
+         left: 0;
+         width: 110px;
+         height: 23px;
+      }
+
+      .rack-2 {
+         height: 100px;
+         width: 23px;
+         bottom: 24px;
+         left: 0;
+      }
+
+      .rack-3 {
+         height: 212px;
+         width: 23px;
+         top: 0;
+         left: 0;
+         /* background-color: ; */
+      }
+
+      .rack-4,
+      .rack-5 {
+         height: 23px;
+         width: 160px;
+         top: 0;
+         left: 24px;
+      }
+
+      .rack-6 {
+         height: 23px;
+         width: 120px;
+         top: 30px;
+         right: 0;
+      }
+
+      .rack-7 {
+         height: 305px;
+         width: 23px;
+         top: 55px;
+         right: 0;
+      }
+
+      .rack-8,
+      .rack-9,
+      .rack-10,
+      .rack-11,
+      .rack-12,
+      .rack-13,
+      .rack-14 {
+         height: 23px;
+         width: 130px;
+         bottom: 0;
+         right: 30px;
+      }
+
+      .rack-15,
+      .rack-16,
+      .rack-17,
+      .rack-18 {
+         height: 200px;
+         width: 18px;
+         top: 40px;
+         left: 40px;
+      }
+
+      .rack-19 {
+         height: 200px;
+         width: 18px;
+         top: 40px;
+         left: 59px;
+      }
+
+      .rack-20,
+      .rack-21,
+      .rack-22,
+      .rack-23 {
+         height: 197px;
+         width: 18px;
+         top: 40px;
+         left: 102px;
+      }
+
+      .rack-24,
+      .rack-25 {
+         height: 197px;
+         width: 18px;
+         top: 40px;
+         left: 121px;
+      }
+
+      .rack-26 {
+         height: 159px;
+         width: 18px;
+         top: 75px;
+         right: 131px;
+      }
+
+      .rack-27,
+      .rack-28 {
+         height: 159px;
+         width: 18px;
+         top: 75px;
+         right: 112px;
+      }
+
+      .rack-29,
+      .rack-30 {
+         height: 159px;
+         width: 18px;
+         top: 75px;
+         right: 79px;
+      }
+
+      .rack-31 {
+         height: 159px;
+         width: 18px;
+         top: 75px;
+         right: 60px;
+      }
+
+      .rack-32,
+      .rack-33,
+      .rack-34,
+      .rack-35,
+      .rack-36 {
+         height: 101px;
+         width: 18px;
+         bottom: 44px;
+         right: 79px;
+      }
+
+      .rack-37 {
+         height: 101px;
+         width: 18px;
+         bottom: 44px;
+         right: 60px;
+      }
+
+      .rack-38,
+      .rack-39,
+      .rack-40,
+      .rack-41 {
+         height: 101px;
+         width: 18px;
+         bottom: 44px;
+         right: 130px;
+      }
+
+      .rack-42,
+      .rack-43,
+      .rack-44,
+      .rack-45,
+      .rack-46,
+      .rack-47 {
+         height: 101px;
+         width: 18px;
+         bottom: 44px;
+         right: 111px;
+      }
+
+      .rack-48,
+      .rack-49,
+      .rack-50 {
+         height: 101px;
+         width: 18px;
+         bottom: 44px;
+         right: 198px;
+      }
+
+      .rack-51,
+      .rack-52,
+      .rack-53 {
+         height: 101px;
+         width: 18px;
+         bottom: 44px;
+         right: 179px;
+      }
+
+      .up {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100px;
+         width: 39px;
+         bottom: 44px;
+         left: 40px;
+         position: absolute;
+         border: 2px solid grey;
+      }
+
+      .up p {
+         transform: rotateZ(-90deg);
+         font-size: 14px;
+         letter-spacing: 2px;
+      }
+
+      .rack-55,
+      .rack-56 {
+         height: 23px;
+         width: 90%;
+         bottom: 0;
+         left: 0;
+      }
+
+      .rack-57 {
+         height: 100px;
+         width: 23px;
+         bottom: 24px;
+         left: 0;
+      }
+
+      .rack-58 {
+         height: 229px;
+         width: 23px;
+         top: 0;
+         left: 0;
+      }
+
+      .rack-59,
+      .rack-60,
+      .rack-61,
+      .rack-62,
+      .rack-63 {
+         height: 23px;
+         width: 150px;
+         top: 0;
+         left: 24px;
+      }
+
+      .rack-64,
+      .rack-65,
+      .rack-66,
+      .rack-67 {
+         height: 23px;
+         width: 142px;
+         top: 30px;
+         right: 0;
+      }
+
+      .rack-68,
+      .rack-69,
+      .rack-70,
+      .rack-71,
+      .rack-72,
+      .rack-73 {
+         height: 308px;
+         width: 23px;
+         top: 54px;
+         right: 0;
+      }
+
+      .rack-74,
+      .rack-75,
+      .rack-76 {
+         height: 166px;
+         width: 18px;
+         top: 40px;
+         left: 40px;
+      }
+
+      .rack-77,
+      .rack-78,
+      .rack-79,
+      .rack-80,
+      .rack-81 {
+         height: 166px;
+         width: 18px;
+         top: 40px;
+         left: 59px;
+      }
+
+      .rack-82,
+      .rack-83 {
+         height: 166px;
+         width: 18px;
+         top: 40px;
+         left: 100px;
+      }
+
+      .rack-84,
+      .rack-85,
+      .rack-86 {
+         height: 166px;
+         width: 18px;
+         top: 40px;
+         left: 119px;
+      }
+
+      .rack-87,
+      .rack-88,
+      .rack-89 {
+         height: 128px;
+         width: 18px;
+         top: 80px;
+         right: 120px;
+      }
+
+      .rack-90 {
+         height: 128px;
+         width: 18px;
+         top: 80px;
+         right: 101px;
+      }
+
+      .rack-91,
+      .rack-92,
+      .rack-93 {
+         height: 128px;
+         width: 18px;
+         top: 80px;
+         right: 64px;
+      }
+
+      .rack-94,
+      .rack-95 {
+         height: 128px;
+         width: 18px;
+         top: 80px;
+         right: 45px;
+      }
+
+      .rack-96,
+      .rack-97 {
+         height: 117px;
+         width: 18px;
+         bottom: 40px;
+         left: 100px;
+      }
+
+      .rack-98,
+      .rack-99,
+      .rack-100 {
+         height: 117px;
+         width: 18px;
+         bottom: 40px;
+         left: 119px;
+      }
+
+      .rack-101,
+      .rack-102,
+      .rack-103 {
+         height: 117px;
+         width: 18px;
+         bottom: 40px;
+         right: 120px;
+      }
+
+      .rack-104,
+      .rack-105,
+      .rack-106 {
+         height: 117px;
+         width: 18px;
+         bottom: 40px;
+         right: 101px;
+      }
+
+      .rack-107 {
+         height: 117px;
+         width: 18px;
+         bottom: 40px;
+         right: 64px;
+      }
+
+      .rack-108,
+      .rack-109,
+      .rack-110,
+      .rack-111 {
+         height: 117px;
+         width: 18px;
+         bottom: 40px;
+         right: 45px;
+      }
+
+      .floor-2 {
+         display: none;
+      }
+
+      .floor-1-btn,
+      .floor-2-btn {
+         position: absolute;
+         background-color: transparent;
+         font-size: 13px;
+         padding: 5px 10px;
+      }
+
+      .floor-1-btn {
+         top: 200px;
+         left: 40px;
+      }
+
+      .floor-2-btn {
+         top: 200px;
+         right: 40px;
+      }
+   </style>
+</head>
+
+<body>
+
+   <div class="container">
+      <div class="sklad">
+         <img class="img"
+            src="https://kharkov.karavan.com.ua/wp-content/uploads/stores/intertop/Intertop-Logotype-01.jpg" alt="">
+         <span>СКЛАД</span>
+      </div>
+      <input type="text" class="name" placeholder="артикул">
+      <button class="name-btn">поиск</button>
+      <button class="floor-1-btn">1 этаж</button>
+      <button class="floor-2-btn">2 этаж</button>
+      <div class="info floor-1">
+         <p class="floor-text">1 ЭТАЖ</p>
+         <div class="rack rack-1" data-name="p"></div>
+         <div class="rack rack-2" data-name="te"></div>
+         <div class="rack rack-3" data-name="kk"></div>
+         <div class="rack rack-4" data-name="kk"></div>
+         <div class="rack rack-5" data-name="3h"></div>
+         <div class="rack rack-6" data-name="kw"></div>
+         <div class="rack rack-7" data-name="kw"></div>
+         <div class="rack rack-8" data-name="gr"></div>
+         <div class="rack rack-9" data-name="5i"></div>
+         <div class="rack rack-10" data-name="iko"></div>
+         <div class="rack rack-11" data-name="bk"></div>
+         <div class="rack rack-12" data-name="bj"></div>
+         <div class="rack rack-13" data-name="6h"></div>
+         <div class="rack rack-14" data-name="uz"></div>
+         <div class="rack rack-15" data-name="am"></div>
+         <div class="rack rack-16" data-name="un"></div>
+         <div class="rack rack-17" data-name="cp"></div>
+         <div class="rack rack-18" data-name="0n"></div>
+         <div class="rack rack-19" data-name="zm"></div>
+         <div class="rack rack-20" data-name="zm"></div>
+         <div class="rack rack-21" data-name="tf"></div>
+         <div class="rack rack-22" data-name="fiw"></div>
+         <div class="rack rack-23" data-name="zk"></div>
+         <div class="rack rack-24" data-name="aw"></div>
+         <div class="rack rack-25" data-name="xw"></div>
+         <div class="rack rack-26" data-name="zw"></div>
+         <div class="rack rack-27" data-name="kd"></div>
+         <div class="rack rack-28" data-name="ow"></div>
+         <div class="rack rack-29" data-name="kd"></div>
+         <div class="rack rack-30" data-name="om"></div>
+         <div class="rack rack-31" data-name="bs"></div>
+         <div class="rack rack-32" data-name="ca"></div>
+         <div class="rack rack-33" data-name="cmc"></div>
+         <div class="rack rack-34" data-name="cmm"></div>
+         <div class="rack rack-35" data-name="iq"></div>
+         <div class="rack rack-36" data-name="bx"></div>
+         <div class="rack rack-37" data-name="bs"></div>
+         <div class="rack rack-38" data-name="zw"></div>
+         <div class="rack rack-39" data-name="yx"></div>
+         <div class="rack rack-40" data-name="yz"></div>
+         <div class="rack rack-41" data-name="0p"></div>
+         <div class="rack rack-42" data-name="uh"></div>
+         <div class="rack rack-43" data-name="8b"></div>
+         <div class="rack rack-44" data-name="iv"></div>
+         <div class="rack rack-45" data-name="0f"></div>
+         <div class="rack rack-46" data-name="4y"></div>
+         <div class="rack rack-47" data-name="uq"></div>
+         <div class="rack rack-48" data-name="ckm"></div>
+         <div class="rack rack-49" data-name="2c"></div>
+         <div class="rack rack-50" data-name="gl"></div>
+         <div class="rack rack-51" data-name="0r"></div>
+         <div class="rack rack-52" data-name="0k"></div>
+         <div class="rack rack-53" data-name="ckf"></div>
+         <div class="up">
+            <p>лестница</p>
+         </div>
+
+      </div>
+      <div class="info floor-2">
+         <p class="floor-text">2 ЭТАЖ</p>
+         <div class="rack rack-55" data-name="ce"></div>
+         <div class="rack rack-56" data-name="td"></div>
+         <div class="rack rack-57" data-name="ce"></div>
+         <div class="rack rack-58" data-name="km"></div>
+         <div class="rack rack-59" data-name="2s"></div>
+         <div class="rack rack-60" data-name="fim"></div>
+         <div class="rack rack-61" data-name="mu"></div>
+         <div class="rack rack-62" data-name="np"></div>
+         <div class="rack rack-63" data-name="vz"></div>
+         <div class="rack rack-64" data-name="lk"></div>
+         <div class="rack rack-65" data-name="v"></div>
+         <div class="rack rack-66" data-name="po"></div>
+         <div class="rack rack-67" data-name="ye"></div>
+         <div class="rack rack-68" data-name="yd"></div>
+         <div class="rack rack-69" data-name="ll"></div>
+         <div class="rack rack-70" data-name="nt"></div>
+         <div class="rack rack-71" data-name="to"></div>
+         <div class="rack rack-72" data-name="rw"></div>
+         <div class="rack rack-73" data-name="oi"></div>
+         <div class="rack rack-74" data-name="eo"></div>
+         <div class="rack rack-75" data-name="8l"></div>
+         <div class="rack rack-76" data-name="sh"></div>
+         <div class="rack rack-77" data-name="nj"></div>
+         <div class="rack rack-78" data-name="xm"></div>
+         <div class="rack rack-79" data-name="ci"></div>
+         <div class="rack rack-80" data-name="tg"></div>
+         <div class="rack rack-81" data-name="cg"></div>
+         <div class="rack rack-82" data-name="br"></div>
+         <div class="rack rack-83" data-name="is"></div>
+         <div class="rack rack-84" data-name="rk"></div>
+         <div class="rack rack-85" data-name="mq"></div>
+         <div class="rack rack-86" data-name="pw"></div>
+         <div class="rack rack-87" data-name="yz"></div>
+         <div class="rack rack-88" data-name="rg"></div>
+         <div class="rack rack-89" data-name="cj"></div>
+         <div class="rack rack-90" data-name="cn"></div>
+         <div class="rack rack-91" data-name="gs"></div>
+         <div class="rack rack-92" data-name="yn"></div>
+         <div class="rack rack-93" data-name="mg"></div>
+         <div class="rack rack-94" data-name="0i"></div>
+         <div class="rack rack-95" data-name="ob"></div>
+         <div class="rack rack-96" data-name="6c"></div>
+         <div class="rack rack-97" data-name="6b"></div>
+         <div class="rack rack-98" data-name="vx"></div>
+         <div class="rack rack-99" data-name="cf"></div>
+         <div class="rack rack-100" data-name="6d"></div>
+         <div class="rack rack-101" data-name="ok"></div>
+         <div class="rack rack-102" data-name="xk"></div>
+         <div class="rack rack-103" data-name="no"></div>
+         <div class="rack rack-104" data-name="sd"></div>
+         <div class="rack rack-105" data-name="tl"></div>
+         <div class="rack rack-106" data-name="5h"></div>
+         <div class="rack rack-107" data-name="vw"></div>
+         <div class="rack rack-108" data-name="te"></div>
+         <div class="rack rack-109" data-name="ck"></div>
+         <div class="rack rack-110" data-name="vk"></div>
+         <div class="rack rack-111" data-name="py"></div>
+
+         <div class="up">
+            <p>лестница</p>
+         </div>
+      </div>
+
+   </div>
+   </div>
+
+
+   <!-- <script src="./main.js"></script> -->
+   <script>
+
+
+
+
+      let input = document.querySelector('.name');
+      const nameBtn = document.querySelector('.name-btn');
+      const racks = document.querySelectorAll('.rack');
+
+      const info = document.querySelectorAll('.info');
+
+
+      const delClass = () => {
+         for (let i = 0; i < racks.length; i++) {
+            racks[i].style.background = 'transparent';
+            racks[i].style.boxShadow = ``;
+         }
+      }
+
+      function randomColor(r, g, b) {
+         r = Math.floor(200 + Math.random() * (255 - 200 - 1));
+         g = Math.floor(200 + Math.random() * (255 - 200 - 1));
+         b = Math.floor(200 + Math.random() * (255 - 200 - 1));
+
+         let rgb = `rgb(${r},${g},${b})`;
+
+         return rgb;
+
+      }
+
+      nameBtn.addEventListener('click', () => {
+         delClass();
+         for (let i = 0; i < racks.length; i++) {
+            racks[i].textContent = '';
+            if (racks[i].dataset.name === input.value.toLowerCase()) {
+               racks[i].style.backgroundColor = randomColor();
+               racks[i].style.boxShadow = `0 0 10px grey`;
+               racks[i].textContent = input.value.toLowerCase();
+            }
+         }
+      });
+
+      // слайдер +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+      function removeClassOfFloor() {
+         info[0].style.display = 'none';
+         info[1].style.display = 'none';
+      }
+
+      document.querySelector('.floor-1-btn').addEventListener('click', () => {
+         removeClassOfFloor();
+         info[0].style.display = 'block';
+      })
+
+      document.querySelector('.floor-2-btn').addEventListener('click', () => {
+         removeClassOfFloor();
+         info[1].style.display = 'block';
+      })
+
+
+
+
+
+
+
+   </script>
+</body>
+
+</html>
